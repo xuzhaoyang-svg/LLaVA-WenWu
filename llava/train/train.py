@@ -73,7 +73,8 @@ class DataArguments:
     lazy_preprocess: bool = False
     is_multimodal: bool = False
     image_folder: Optional[str] = field(default=None)
-    image_aspect_ratio: str = 'square'
+    # image_aspect_ratio: str = 'square'
+    image_aspect_ratio: str = 'anyres'
 
 
 @dataclass
@@ -572,7 +573,7 @@ def preprocess_mpt(
             max_length=tokenizer.model_max_length,
             truncation=True,
         ).input_ids
-        
+
     targets = input_ids.clone()
     assert conv.sep_style == conversation_lib.SeparatorStyle.MPT
 
